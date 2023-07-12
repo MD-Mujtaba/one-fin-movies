@@ -12,19 +12,19 @@ import { AuthGuard } from "./shared/auth.guard";
                     component: AppComponent,
                     children: [
                         {
-                            path: 'login',
-                            loadChildren: () => 
-                            import("./pages/login/login.module").then(
-                                (m) => m.LoginModule
-                            )
-                        },
-                        {
-                            path: 'movies',
+                            path: '',
                             loadChildren: () => 
                             import("./pages/movies/movies.module").then(
                                 (m) => m.MoviesModule
                             ),
                             canActivate: [ AuthGuard ]
+                        },
+                        {
+                            path: 'login',
+                            loadChildren: () => 
+                            import("./pages/login/login.module").then(
+                                (m) => m.LoginModule
+                            )
                         },
                     ]
                 }

@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         localStorage.setItem('token', response.data.token);
         this.loginForm.reset();
-        this.router.navigate(['/movies']);
+        this.router.navigate(['']);
       },
       (failure) => {
         this.messageService.add({
