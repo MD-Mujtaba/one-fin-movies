@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   emailRegEx: RegExp;
   loginForm: FormGroup;
-  loading: boolean = false;
+  loading: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
