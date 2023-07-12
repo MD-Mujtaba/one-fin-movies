@@ -12,7 +12,7 @@ import { AuthGuard } from "./shared/auth.guard";
                     component: AppComponent,
                     children: [
                         {
-                            path: '',
+                            path: 'movies',
                             loadChildren: () => 
                             import("./pages/movies/movies.module").then(
                                 (m) => m.MoviesModule
