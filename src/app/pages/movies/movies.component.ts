@@ -7,6 +7,10 @@ import { MovieService } from './movies.service';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
+  movies!: [];
+  totalRecords: number;
+  pageLinks: number;
+  loading: boolean = false;
 
   constructor(
     private movieService: MovieService
@@ -17,8 +21,11 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovieList() {
+    this.loading = true;
     this.movieService.getMovieList().subscribe((result) => {
-      console.log("MOVIES ===>", result)
+      this.totalRecords = result.count;
+      this.movies = result.results;
+      this.loading = false;
     })
   }
 
