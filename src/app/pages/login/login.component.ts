@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +15,13 @@ import { MessageService } from 'primeng/api';
 export class LoginComponent implements OnInit {
   emailRegEx: RegExp;
   loginForm: FormGroup;
+  loading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private loginService: LoginService,
+    private router: Router
     ) {}
   
   ngOnInit() {
@@ -26,23 +31,41 @@ export class LoginComponent implements OnInit {
 
   createLoginForm() {
     this.loginForm = this.formBuilder.group({
-      email: [ '', [ Validators.required, Validators.pattern(this.emailRegEx)] ],
+      username: [ '', Validators.required ],
       password: [ '', Validators.required ]
     });
   }
 
   onSignUp() {
-    console.log("Sign Up")
     this.messageService.add({
       severity: 'info',
       summary: 'Info',
-      detail: 'Sign Up Form is in Process' });
+      detail: 'Sign Up Form is in Process' 
+    });
   }
 
   onSubmit() {
-    // {
-    //   "email": "test@gmail.co",
-    //   "password": "abcd"
-    // }
+    if(this.loginForm.valid) {
+      this.loading = true;
+      this.loginService.onLogin(this.loginForm.value).subscribe((response) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Logged in Successfully' 
+        });
+        this.loading = false;
+        localStorage.setItem('token', response.data.token);
+        this.loginForm.reset();
+        this.router.navigate(['/movies']);
+      },
+      (failure) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: failure.error.error.message
+        });  
+      }
+      )
+    }
   }
 }

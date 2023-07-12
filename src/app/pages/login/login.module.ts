@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { ToastModule } from 'primeng/toast';
 import { LoginRoutingModule } from './login-routing.module';
+import { LoginService } from './login.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,9 @@ import { LoginRoutingModule } from './login-routing.module';
     DividerModule,
     CardModule,
     ToastModule
+  ],
+  providers: [
+    LoginService
   ]
 })
 
