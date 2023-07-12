@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
+import { AuthGuard } from "./shared/auth.guard";
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import { AppComponent } from "./app.component";
                             loadChildren: () => 
                             import("./pages/movies/movies.module").then(
                                 (m) => m.MoviesModule
-                            )
+                            ),
+                            canActivate: [ AuthGuard ]
                         },
                         {
                             path: 'login',
