@@ -17,10 +17,17 @@ export class MovieService {
 
   requestOptions = { headers: this.headers };
 
-  getMovieList(): Observable<any> {
-    return this.http.get(
-      `${environment.baseUrls.MOVIES_URL}`,
-      this.requestOptions
-    )
+  getMovieList(page: number): Observable<any> {
+    if(page != 1) {
+      return this.http.get(
+        `${environment.baseUrls.MOVIES_URL}?page=${page}`,
+        this.requestOptions
+      )  
+    } else {
+      return this.http.get(
+        `${environment.baseUrls.MOVIES_URL}`,
+        this.requestOptions
+      )
+    }
   }
 }

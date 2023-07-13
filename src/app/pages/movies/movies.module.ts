@@ -7,10 +7,15 @@ import { DataViewModule } from 'primeng/dataview';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
+import { PaginatorModule } from 'primeng/paginator';
+import { CardModule } from 'primeng/card';
+import { EllipsisPipe } from 'src/app/shared/ellipsis.pipe';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
-    MoviesComponent
+    MoviesComponent,
+    EllipsisPipe
   ],
   imports: [
     CommonModule,
@@ -18,7 +23,10 @@ import { TooltipModule } from 'primeng/tooltip';
     DataViewModule,
     ToolbarModule,
     ButtonModule,
-    TooltipModule
+    TooltipModule,
+    PaginatorModule,
+    CardModule,
+    ProgressSpinnerModule
   ]
 })
 export class MoviesModule { }

@@ -1,0 +1,19 @@
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 5%;
+  text-align: center;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}

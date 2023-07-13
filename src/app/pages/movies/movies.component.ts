@@ -7,11 +7,12 @@ import { MovieService } from './movies.service';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-  movies!: [];
+  movies: any[];
   totalRecords: number;
   pageLinks: number;
   loading: boolean = false;
-
+  currentPage = 1;
+  itemsPerPage = 10;
   constructor(
     private movieService: MovieService
   ) {}
@@ -22,11 +23,15 @@ export class MoviesComponent implements OnInit {
 
   getMovieList() {
     this.loading = true;
-    this.movieService.getMovieList().subscribe((result) => {
+    this.movieService.getMovieList(this.currentPage).subscribe((result) => {
       this.totalRecords = result.count;
       this.movies = result.results;
       this.loading = false;
     })
   }
 
+  onPageChange(event: any): void {
+    this.currentPage = event.page + 1;
+    this.getMovieList();
+  }
 }
