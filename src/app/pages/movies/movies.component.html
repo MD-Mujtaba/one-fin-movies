@@ -1,9 +1,15 @@
 <p-toolbar>
     <div class="p-toolbar-group-start">
-        <h1>Movies</h1>
+        <h1>Trending Movies</h1>
     </div>
     <div class="p-toolbar-group-end">
-        <p-button pTooltip="Refresh" tooltipPosition="bottom" icon="pi pi-refresh" class="mr-2" (onClick)="getMovieList()"></p-button>
+        <div class="flex mr-2">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Search Movie" [(ngModel)]="search"/>
+            </span>
+        </div>
+        <p-button label="Refresh" icon="pi pi-refresh" (onClick)="getMovieList()"></p-button>
     </div>
 </p-toolbar>
 <div class="main" *ngIf="movies">
@@ -18,5 +24,7 @@
       <p>{{ movie?.description | ellipsis:25 }}</p>
     </div>
   </div>
-  <p-paginator [rows]="itemsPerPage" [totalRecords]="totalRecords" [first]="currentPage" (onPageChange)="onPageChange($event)"></p-paginator>
+  <div class="paginator">
+      <p-paginator [rows]="itemsPerPage" [totalRecords]="totalRecords" [first]="currentPage" (onPageChange)="onPageChange($event)"></p-paginator>
+  </div>
 </div>

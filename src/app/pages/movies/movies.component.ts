@@ -13,6 +13,8 @@ export class MoviesComponent implements OnInit {
   loading: boolean = false;
   currentPage = 1;
   itemsPerPage = 10;
+  search: string;
+
   constructor(
     private movieService: MovieService
   ) {}
@@ -22,6 +24,7 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovieList() {
+    this.search = '';
     this.loading = true;
     this.movieService.getMovieList(this.currentPage).subscribe((result) => {
       this.totalRecords = result.count;

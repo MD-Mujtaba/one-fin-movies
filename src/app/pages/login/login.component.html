@@ -7,11 +7,11 @@
             <div class="p-fluid">
                 <div class="field">
                     <label for="username">Username</label>
-                    <input pInputText id="username" type="text" formControlName="username"/>
+                    <input pInputText id="username" type="text" formControlName="username" placeholder="Enter Username"/>
                 </div>
                 <div class="field">
                     <label for="password">Password</label>
-                    <p-password id="password" [toggleMask]="true" formControlName="password" [feedback]="false"></p-password>
+                    <p-password id="password" [toggleMask]="true" formControlName="password" [feedback]="false" placeholder="Enter Password"></p-password>
                 </div>
                 <button type="submit" pButton icon="pi pi-check" label="Login"
                     [disabled]="loginForm.invalid || loading"></button>
