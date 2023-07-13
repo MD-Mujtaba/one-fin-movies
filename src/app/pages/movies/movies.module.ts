@@ -12,11 +12,13 @@ import { CardModule } from 'primeng/card';
 import { EllipsisPipe } from 'src/app/shared/ellipsis.pipe';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { InputTextModule } from 'primeng/inputtext';
+import { FooterComponent } from '../footer/footer.component';
 
 @NgModule({
   declarations: [
     MoviesComponent,
-    EllipsisPipe
+    EllipsisPipe,
+    FooterComponent
   ],
   imports: [
     CommonModule,
