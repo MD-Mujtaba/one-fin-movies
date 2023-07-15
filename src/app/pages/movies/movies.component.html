@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <p-toolbar>
     <div class="p-toolbar-group-start">
         <h1>Trending Movies</h1>
@@ -9,7 +10,7 @@
                 <input pInputText type="text" placeholder="Search Movie" [(ngModel)]="search"/>
             </span>
         </div>
-        <p-button label="Refresh" icon="pi pi-refresh" (onClick)="getMovieList()"></p-button>
+        <p-button label="Refresh" icon="pi pi-refresh" (onClick)="getMovieList()" *ngIf="error"></p-button>
     </div>
 </p-toolbar>
 <div class="main" *ngIf="movies">

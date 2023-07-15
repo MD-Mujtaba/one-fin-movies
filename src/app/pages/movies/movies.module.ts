@@ -13,6 +13,7 @@ import { EllipsisPipe } from 'src/app/shared/ellipsis.pipe';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { InputTextModule } from 'primeng/inputtext';
 import { FooterComponent } from '../footer/footer.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FooterComponent } from '../footer/footer.component';
     PaginatorModule,
     CardModule,
     ProgressSpinnerModule,
-    InputTextModule
+    InputTextModule,
+    ToastModule
   ]
 })
 export class MoviesModule { }

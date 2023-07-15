@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from './movies.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-movies',
@@ -14,9 +15,10 @@ export class MoviesComponent implements OnInit {
   currentPage = 1;
   itemsPerPage = 10;
   search: string;
-
+  error: boolean = false;
   constructor(
-    private movieService: MovieService
+    private movieService: MovieService,
+    private messageService: MessageService,
   ) {}
 
   ngOnInit() {
@@ -30,6 +32,14 @@ export class MoviesComponent implements OnInit {
       this.totalRecords = result.count;
       this.movies = result.results;
       this.loading = false;
+      this.error = false;
+    }, () => {
+      this.error = true;
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Failed to Load Movies, Please Refresh'
+      });
     })
   }
 
